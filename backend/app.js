@@ -17,9 +17,14 @@ mongoose.connect(process.env.MONGO_URI, {
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch((error) => console.error('Erreur de connexion à MongoDB :', error));
 
-// Route de test
+// Route de test principale
 app.get('/', (req, res) => {
   res.status(200).json({ message: 'Connexion à MongoDB réussie et serveur opérationnel !' });
 });
+
+
+// Routes API supplémentaires (exemple avec une route test)
+const sampleRoutes = require('./routes/sampleRoutes'); // Importer les routes
+app.use('/api', sampleRoutes); // Préfixe pour les routes API
 
 module.exports = app;
